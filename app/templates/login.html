@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="col-12 col-md-8 col-center">
+        <h1 class="text-center title">UniSocial</h1>
+        <h1 class="text-center">Register</h1>
+        <form action="/" method="post" role="form" name="form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Login">
+        </form>
+        <p></p>
+        <form action="/register" method="post" class="d-inline">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="submit" class="btn btn-primary" value="Create New Account">
+        </form>
+    </div>
+</div>
+{% endblock %}

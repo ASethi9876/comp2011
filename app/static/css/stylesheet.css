@@ -1,0 +1,55 @@
+body {
+    background-color: lightgrey !important;
+}
+
+.title {
+    color: #b90000;
+    font-family: Arial;
+    font-size: 3rem;
+}
+
+h1 {
+    color: black;
+    font-family: Arial;
+    font-size: 3rem;
+}
+
+h2 {
+    color: black;
+    font-family: Arial;
+    font-size: 2rem;
+}
+
+p {
+    color: black;
+    font-family: Arial;
+    font-size: 1rem;
+}
+
+label {
+    color: black;
+    font-family: Arial;
+    font-size: 1.5rem;
+}
+
+.btn {  
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+}
+
+.col-center {
+    margin: 0 auto;
+}
+
+.navbar {
+    background-color: #6f0000;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: lightgrey;
+}

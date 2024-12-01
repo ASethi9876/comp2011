@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = "container">
+    <div class="col-12 col-md-8 col-center">
+        <h1 class="text-center">New Message</h1>
+        {% if modules %}
+            <form action="/send_message" method="post" role="form" name="form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <div class="mb-3">
+                    <label for="module" class="form-label">Module</label><br>
+                    <select name="module">
+                    {% for module in modules %}
+                        <option value="{{ module.id }}">{{ module.module_code}}: {{ module.title }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" name="title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message_text" class="form-label">Message</label>
+                    <textarea type="text" class="form-control" name="message_text" rows="8" required></textarea>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Send">
+            </form>
+        {% else %}
+            <br><p class="text-center">You must join a module first, join <a href="/module_list">here</a>.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

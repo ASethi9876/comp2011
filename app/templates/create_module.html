@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class = "container">
+    <div class="col-12 col-md-8 col-center">
+        <h1 class="text-center">Create New Module</h1>
+        <form action="/create_module" method="post" role="form" name="form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <div class="mb-3">
+                <label for="module_code" class="form-label">Module Code</label>
+                <input type="text" class="form-control" name="module_code" required>
+            </div>
+            <div class="mb-3">
+                <label for="module_code" class="form-label">Module Title</label>
+                <input type="text" class="form-control" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea type="text" class="form-control" name="description" rows="3" required></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Create">
+        </form>
+    </div>
+</div>
+{% endblock %}
