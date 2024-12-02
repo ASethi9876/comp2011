@@ -23,7 +23,7 @@ $(document).ready(function() {
 			success: function(response){
 				console.log(response);
 
-				if(vote_type == "up") {
+				if (vote_type == "up") {
 					clicked_obj.children()[0].innerHTML = " " + response.upvotes;
 				} else {
 					clicked_obj.children()[0].innerHTML = " " + response.downvotes;

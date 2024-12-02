@@ -8,8 +8,8 @@
                 {% for module in created %}
                     <div class="container-fluid p-3 my-3 bg-light">
                         <h2 class="text-center">{{ module.module_code }} {{ module.title }}</h2>
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                         <form action="/delete_module" method="post" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                             <input type="hidden" name="id" value="{{ module.id }}">
                             <input type="submit" class="btn btn-danger" value="Delete">
                         </form>
@@ -18,8 +18,8 @@
                 {% for module in enrolled %}
                     <div class="container-fluid p-3 my-3 bg-light">
                         <h2 class="text-center">{{ module.module_code }} {{ module.title }}</h2>
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                         <form action="/leave_module" method="post" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
                             <input type="hidden" name="id" value="{{ module.id }}">
                             <input type="submit" class="btn btn-danger" value="Leave">
                         </form>
@@ -53,21 +53,22 @@
             <div class="container-fluid p-3 my-3 bg-light">
                 <h2>{{ message.title }}</h2>
                 <p>
-                    {{ message.sender }}<br>
-                    Sent at {{message.time.strftime("%H:%M") }} on {{ message.time.strftime("%d/%m/%y") }}<br>
-                    {{ message.message }}
+                    Sent by: {{ message.sender }}<br>
+                    Sent at: {{message.time.strftime("%H:%M") }} on {{ message.time.strftime("%d/%m/%y") }}
                 </p>
+                <hr>
+                <p>{{ message.message }}</p>  
                 
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-                    <button type="submit" class="vote btn-success" data-id="{{ message.message_id }}" data-vote_type="up">
+                    <button type="submit" class="vote btn-success" data-id="{{ message.id }}" data-vote_type="up">
                         <span vote_type="up" id="upvotes"> {{ message.upvotes }} </span></button>
-                    <button type="submit" class="vote btn-danger" data-id="{{ message.message_id }}" data-vote_type="down">
+                    <button type="submit" class="vote btn-danger" data-id="{{ message.id }}" data-vote_type="down">
                         <span vote_type="down" id="downvotes"> {{ message.downvotes }}</span></button>
 
                 {% if message.sender == user %}
                     <form action="/delete_message" method="post" role="form" name="form">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-                        <input type="hidden" name="id" value="{{ message.message_id }}">
+                        <input type="hidden" name="id" value="{{ message.id }}">
                         <input type="submit" class="btn btn-primary" value="Delete">
                     </form>
                 {% endif %}

@@ -6,6 +6,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf.csrf import CSRFProtect
 from flask_admin import Admin
 from flask_babel import Babel
+import logging
 
 def get_locale():
     if request.args.get('lang'):
@@ -14,6 +15,7 @@ def get_locale():
 
 app = Flask(__name__)
 app.config.from_object('config')
+logging.basicConfig(level=logging.DEBUG)
 Bootstrap(app)
 csrf = CSRFProtect(app)
 db = SQLAlchemy(app)
